@@ -77,7 +77,7 @@ document.querySelector("html").onclick = function () {
           if (result[0].transcript == "пауза") {
             timerflag = false;
             synth.speak(payse);
-          } if(result[0].transcript == "продолжить") {
+          } if(result[0].transcript == "продолжить"||result[0].transcript == "старт") {
             timerflag = true;
             timer();
             synth.speak(play);
