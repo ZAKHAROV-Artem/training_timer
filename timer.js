@@ -67,14 +67,18 @@ document.querySelector("html").onclick = function () {
       let synth = window.speechSynthesis;
       let payse = new SpeechSynthesisUtterance("Поставлено на паузу");
       let play = new SpeechSynthesisUtterance("Продолжили");
-      let google = [
-        "google",
-        "открой google",
-        "открой новую вкладку",
-        "открыть google",
-      ];
+      
       recognizer.onresult = function (event) {
+        let google = [
+          "google",
+          "открой google",
+          "открой новую вкладку",
+          "открыть google",
+        ];
         var result = event.results[event.resultIndex];
+        
+          
+        
         if (result.isFinal) {
           if (result[0].transcript == "пауза") {
             timerflag = false;
@@ -88,10 +92,10 @@ document.querySelector("html").onclick = function () {
           for (let j = 0; j < google.length; j++) {
             console.log(google[j]);
 
-            
-          }if (result[0].transcript == google[j]) {
-              window.open("http://google.com",target="_blank");
+            if (result[0].transcript == google[j]) {
+              window.open('https://google.com');
             }
+          }
         }
       };
       recognizer.start();
@@ -99,3 +103,5 @@ document.querySelector("html").onclick = function () {
     }
   }, 3000);
 };
+
+      
