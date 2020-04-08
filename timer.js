@@ -1,11 +1,8 @@
 let ready, one, two, three, audio, obr, i, timerflag;
-
 document.querySelector("html").onclick = function () {
   obr = 60;
   i = 1;
   timerflag = true;
-
- 
   ready = document.querySelector(".ready");
   ready.classList.remove("opacity");
 
@@ -71,23 +68,26 @@ document.querySelector("html").onclick = function () {
       let payse = new SpeechSynthesisUtterance("Поставлено на паузу");
       let play = new SpeechSynthesisUtterance("Продолжили");
       let gopnick = new SpeechSynthesisUtterance("ааааааааууууууффф");
+      let google = ['google','открой google','открой новую вкладку','открыть google'];
       recognizer.onresult = function (event) {
         var result = event.results[event.resultIndex];
         if (result.isFinal) {
           if (result[0].transcript == "пауза") {
             timerflag = false;
             synth.speak(payse);
-          } if(result[0].transcript == "продолжить"||result[0].transcript == "старт") {
+          } if(result[0].transcript == "продолжить") {
             timerflag = true;
             timer();
             synth.speak(play);
-          }else{
-            synth.speak(gopnick);
+          }for(let i = 0;i<google.length;i++){
+          if(result[0].transcript == google[i]){
+            window.open("http://google.com");
+            }
           }
         }
       };
       recognizer.start();
-      setTimeout(heart, 4000);
+      setTimeout(heart, 6000);
     }
   }, 3000);
 };
