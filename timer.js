@@ -1,9 +1,9 @@
 let ready, one, two, three, audio, obr, i, timerflag,readyflag;
+readyflag = true;
 document.querySelector("html").onclick = function () {
   obr = 60;
   i = 1;
   timerflag = true;
-  readyflag = true;
   if(readyflag){ 
   readyflag = false;
   ready = document.querySelector(".ready");
