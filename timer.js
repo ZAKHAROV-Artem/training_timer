@@ -67,7 +67,6 @@ document.querySelector("html").onclick = function () {
       let synth = window.speechSynthesis;
       let payse = new SpeechSynthesisUtterance("Поставлено на паузу");
       let play = new SpeechSynthesisUtterance("Продолжили");
-      let gopnick = new SpeechSynthesisUtterance("ааааааааууууууффф");
       let google = ['google','открой google','открой новую вкладку','открыть google'];
       recognizer.onresult = function (event) {
         var result = event.results[event.resultIndex];
@@ -79,8 +78,8 @@ document.querySelector("html").onclick = function () {
             timerflag = true;
             timer();
             synth.speak(play);
-          }for(let i = 0;i<google.length;i++){
-          if(result[0].transcript == google[i]){
+          }for(let j = 0;j<google.length;j++){
+          if(result[0].transcript == google[j]){
             window.open("http://google.com");
             }
           }
