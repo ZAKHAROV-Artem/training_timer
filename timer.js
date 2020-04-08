@@ -1,5 +1,8 @@
-let ready, one, two, three, audio, obr, i, timerflag;
+let ready, one, two, three, audio, obr, i, timerflag,readyflag;
+readyflag = true;
+if(readyflag){
 document.querySelector("html").onclick = function () {
+  readyflag = false;
   obr = 60;
   i = 1;
   timerflag = true;
@@ -27,7 +30,7 @@ document.querySelector("html").onclick = function () {
     two.classList.add("opacity");
     three.classList.add("opacity");
   }, 2800);
-
+};
   //End ready alert----------------------
 
   setTimeout(function () {
