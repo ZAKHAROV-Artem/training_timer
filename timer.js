@@ -87,7 +87,7 @@ document.querySelector("html").onclick = function () {
         }
       };
       recognizer.start();
-      setTimeout(heart, 2000);
+      setTimeout(heart, 4000);
     }
   }, 3000);
 };
