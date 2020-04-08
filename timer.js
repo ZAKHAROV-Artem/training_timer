@@ -67,20 +67,29 @@ document.querySelector("html").onclick = function () {
       let synth = window.speechSynthesis;
       let payse = new SpeechSynthesisUtterance("Поставлено на паузу");
       let play = new SpeechSynthesisUtterance("Продолжили");
-      let google = ['google','открой google','открой новую вкладку','открыть google'];
+      let google = [
+        "google",
+        "открой google",
+        "открой новую вкладку",
+        "открыть google",
+      ];
       recognizer.onresult = function (event) {
         var result = event.results[event.resultIndex];
         if (result.isFinal) {
           if (result[0].transcript == "пауза") {
             timerflag = false;
             synth.speak(payse);
-          } if(result[0].transcript == "продолжить") {
+          }
+          if (result[0].transcript == "продолжить") {
             timerflag = true;
             timer();
             synth.speak(play);
-          }for(let j = 0;j<google.length;j++){
-          if(result[0].transcript == google[j]){
-            window.open("http://google.com");
+          }
+          for (let j = 0; j < google.length; j++) {
+            console.log(google[j]);
+
+            if (result[0].transcript == google[j]) {
+              window.open("http://google.com",target="_blank");
             }
           }
         }
