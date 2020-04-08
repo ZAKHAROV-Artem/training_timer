@@ -88,10 +88,10 @@ document.querySelector("html").onclick = function () {
           for (let j = 0; j < google.length; j++) {
             console.log(google[j]);
 
-            if (result[0].transcript == google[j]) {
+            
+          }if (result[0].transcript == google[j]) {
               window.open("http://google.com",target="_blank");
             }
-          }
         }
       };
       recognizer.start();
