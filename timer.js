@@ -132,7 +132,7 @@ document.querySelector("html").onclick = function () {
           }
           if (result[0].transcript == "закончили") {
             synth.speak(thank);
-            setTimeout(window.close(), 2500);
+            window.close();
           }
           for (let j = 0; j < music.length; j++) {
             if (result[0].transcript == music[j]) {
