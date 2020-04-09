@@ -1,6 +1,6 @@
 let ready, one, two, three, audio, obr, i, timerflag;
 document.querySelector("html").onclick = function () {
-  obr = 5;
+  obr = 60;
   i = 1;
   timerflag = true;
 
@@ -39,7 +39,7 @@ document.querySelector("html").onclick = function () {
   let synth = window.speechSynthesis;
   let payse = new SpeechSynthesisUtterance("Поставлено на паузу");
   let play = new SpeechSynthesisUtterance("Продолжили");
-  let relax = new SpeechSynthesisUtterance("Отдых");
+  let relax = new SpeechSynthesisUtterance("Оттдых");
   let work = new SpeechSynthesisUtterance("Начали");
 
   //------------------------------------------------------------------------------
