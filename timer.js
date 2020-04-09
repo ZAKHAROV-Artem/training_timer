@@ -1,8 +1,11 @@
 let ready, one, two, three, audio, obr, i, timerflag;
 document.querySelector("html").onclick = function () {
-  obr = 60;
+  obr = 5;
   i = 1;
   timerflag = true;
+
+  //ready alert------------------------------------------------------------------------
+
   ready = document.querySelector(".ready");
   ready.classList.remove("opacity");
 
@@ -28,7 +31,20 @@ document.querySelector("html").onclick = function () {
     three.classList.add("opacity");
   }, 2800);
 
-  //End ready alert----------------------
+
+  //----------------------------------------------------------
+
+  //create recognizer  and speechSynthesisUtterance-------------------------------
+
+  let synth = window.speechSynthesis;
+  let payse = new SpeechSynthesisUtterance("Поставлено на паузу");
+  let play = new SpeechSynthesisUtterance("Продолжили");
+  let relax = new SpeechSynthesisUtterance("Отдых");
+  let work = new SpeechSynthesisUtterance("Начали");
+
+  //------------------------------------------------------------------------------
+
+  //timer-------------------------------------------------------------------------
 
   setTimeout(function () {
     timer();
@@ -40,45 +56,37 @@ document.querySelector("html").onclick = function () {
       }
       if (i % 2 == 1 && obr == 0) {
         document.querySelector("body").style.background = "white";
+        synth.speak(relax);
         setTimeout(function () {
           document.querySelector("body").style.background = "#212121";
         }, 1500);
-        setTimeout(function () {
           i++;
           obr = 10;
-        }, 1460);
       }
       if (i % 2 == 0 && obr == 0) {
         document.querySelector("body").style.background = "white";
+        synth.speak(work);
         setTimeout(function () {
           document.querySelector("body").style.background = "#212121";
         }, 1500);
-        setTimeout(function () {
           i++;
           obr = 60;
-        }, 1460);
       }
     }
+
+//------------------------------------------------------------------------------------------
+
+//heart func -------------------------------------------------------------------------------
     heart();
     function heart() {
       let recognizer = new webkitSpeechRecognition();
       recognizer.interimResults = true;
       recognizer.lang = "ru-Ru";
-      let synth = window.speechSynthesis;
-      let payse = new SpeechSynthesisUtterance("Поставлено на паузу");
-      let play = new SpeechSynthesisUtterance("Продолжили");
-      
+      recognizer.start();
       recognizer.onresult = function (event) {
-        let google = [
-          "google",
-          "открой google",
-          "открой новую вкладку",
-          "открыть google",
-        ];
+       
         var result = event.results[event.resultIndex];
-        
-          
-        
+      
         if (result.isFinal) {
           if (result[0].transcript == "пауза") {
             timerflag = false;
@@ -89,19 +97,11 @@ document.querySelector("html").onclick = function () {
             timer();
             synth.speak(play);
           }
-          for (let j = 0; j < google.length; j++) {
-            console.log(google[j]);
-
-            if (result[0].transcript == google[j]) {
-              window.open('https://google.com');
-            }
-          }
         }
       };
-      recognizer.start();
       setTimeout(heart, 6000);
     }
   }, 3000);
 };
-
+//---------------------------------------------------------------------------
       
