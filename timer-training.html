@@ -23,7 +23,8 @@
           font:70px verdana;
           position: absolute;
           top: 100%;
-          left: 48%;
+          left: 50%;
+          transform: translate(-50%);
           transition: 0.4s;
         }
         .opacity{
@@ -39,15 +40,22 @@
           font-size:100px;
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        @media screen and (max-width: 600px){
+          .ready{  
+          font:40px sans-serif;
+          }.num{
+            font:50px verdana;
+          }
+        }
     </style>
 </head>
 <body>
-    
-    <h1 class="ready opacity">Приготовтесь <span class="opacity num one">1</span>
+
+    <h3 class="ready opacity">Приготовтесь <span class="opacity num one">1</span>
                                    <span class="opacity num two">2</span>
                                    <span class="opacity num three">3</span>
                                    
-    </h1>
+    </h3>
 
     <div class="timer">
 
