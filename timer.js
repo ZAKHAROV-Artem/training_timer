@@ -31,7 +31,6 @@ document.querySelector("html").onclick = function () {
     three.classList.add("opacity");
   }, 2800);
 
-
   //----------------------------------------------------------
 
   //create recognizer  and speechSynthesisUtterance-------------------------------
@@ -41,7 +40,8 @@ document.querySelector("html").onclick = function () {
   let play = new SpeechSynthesisUtterance("Продолжили");
   let relax = new SpeechSynthesisUtterance("Оттдых");
   let work = new SpeechSynthesisUtterance("Начали");
-
+  let thank = new SpeechSynthesisUtterance("Спасибо за тренировку");
+  let open = new SpeechSynthesisUtterance("Открываю");
   //------------------------------------------------------------------------------
 
   //timer-------------------------------------------------------------------------
@@ -60,8 +60,8 @@ document.querySelector("html").onclick = function () {
         setTimeout(function () {
           document.querySelector("body").style.background = "#212121";
         }, 1500);
-          i++;
-          obr = 10;
+        i++;
+        obr = 10;
       }
       if (i % 2 == 0 && obr == 0) {
         document.querySelector("body").style.background = "white";
@@ -69,14 +69,48 @@ document.querySelector("html").onclick = function () {
         setTimeout(function () {
           document.querySelector("body").style.background = "#212121";
         }, 1500);
-          i++;
-          obr = 60;
+        i++;
+        obr = 60;
       }
     }
 
-//------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------
 
-//heart func -------------------------------------------------------------------------------
+    //all window opening arrays-----------------------------------------------------------------
+    let youtube = [
+      "Открыть YouTube",
+      "YouTube",
+      "программа для просмотра видео",
+      "Open YouTube",
+    ];
+    let google = [
+      "Google",
+      "Открыть новую вкладку",
+      "Открыть Гугл",
+      "Открыть Google",
+      "Гугл открыть",
+      "Google открыть",
+    ];
+    let random_music = Math.floor(Math.random() * Math.floor(3));
+    let musicUrl = {
+      0: "https://www.youtube.com/watch?v=7Nmhfg3QphU",
+      1: "https://www.youtube.com/watch?v=1LB7pKaU0cc",
+      2: "https://www.youtube.com/watch?v=vOwhytzk4Vo",
+    };
+    let music = [
+      "Включи музыку",
+      "Музыка",
+      "Включи крутую музыку",
+      "Можна музыку",
+      "музыка",
+      "Music",
+      "music",
+    ];
+
+    console.log(music[random_music]);
+    //------------------------------------------------------------------------------------------
+
+    //heart func -------------------------------------------------------------------------------
     heart();
     function heart() {
       let recognizer = new webkitSpeechRecognition();
@@ -84,9 +118,8 @@ document.querySelector("html").onclick = function () {
       recognizer.lang = "ru-Ru";
       recognizer.start();
       recognizer.onresult = function (event) {
-       
-        var result = event.results[event.resultIndex];
-      
+        let result = event.results[event.resultIndex];
+
         if (result.isFinal) {
           if (result[0].transcript == "пауза") {
             timerflag = false;
@@ -97,6 +130,28 @@ document.querySelector("html").onclick = function () {
             timer();
             synth.speak(play);
           }
+          if (result[0].transcript == "закончили") {
+            synth.speak(thank);
+            setTimeout(window.close(), 2500);
+          }
+          for (let j = 0; j < music.length; j++) {
+            if (result[0].transcript == music[j]) {
+              window.open(musicUrl[random_music]);
+              synth.speak(open);
+            }
+          }
+          for (let j = 0; j < youtube.length; j++) {
+            if (result[0].transcript == youtube[j]) {
+              window.open("http://www.youtube.com");
+              synth.speak(open);
+            }
+          }
+          for (let j = 0; j < google.length; j++) {
+            if (result[0].transcript == google[j]) {
+              window.open("http://google.com");
+              synth.speak(open);
+            }
+          }
         }
       };
       setTimeout(heart, 6000);
@@ -104,4 +159,3 @@ document.querySelector("html").onclick = function () {
   }, 3000);
 };
 //---------------------------------------------------------------------------
-      
