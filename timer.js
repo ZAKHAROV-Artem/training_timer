@@ -1,5 +1,4 @@
 let ready, one, two, three, audio, obr, i, timerflag;
-let random_music = Math.floor(Math.random() * Math.floor(3));
 document.querySelector("html").onclick = function () {
   obr = 60;
   i = 1;
@@ -136,6 +135,7 @@ document.querySelector("html").onclick = function () {
           }
           for (let j = 0; j < music.length; j++) {
             if (result[0].transcript == music[j]) {
+              let random_music = Math.floor(Math.random() * Math.floor(3));
               window.open(musicUrl[random_music]);
               synth.speak(open);
             }
