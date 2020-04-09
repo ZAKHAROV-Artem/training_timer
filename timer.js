@@ -1,4 +1,5 @@
 let ready, one, two, three, audio, obr, i, timerflag;
+let random_music = Math.floor(Math.random() * Math.floor(3));
 document.querySelector("html").onclick = function () {
   obr = 60;
   i = 1;
@@ -91,7 +92,6 @@ document.querySelector("html").onclick = function () {
       "Гугл открыть",
       "Google открыть",
     ];
-    let random_music = Math.floor(Math.random() * Math.floor(3));
     let musicUrl = {
       0: "https://www.youtube.com/watch?v=7Nmhfg3QphU",
       1: "https://www.youtube.com/watch?v=1LB7pKaU0cc",
