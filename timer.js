@@ -154,7 +154,7 @@ document.querySelector("html").onclick = function () {
           }
         }
       };
-      setTimeout(heart, 6000);
+      setTimeout(heart, 4000);
     }
   }, 3000);
 };
