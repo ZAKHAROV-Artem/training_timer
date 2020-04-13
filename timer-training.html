@@ -47,10 +47,20 @@
             font:50px verdana;
           }
         }
+        .progress{
+          width:0%;
+          height: 6px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          transition: 1s;
+          transition-timing-function: linear;
+          background-color: rgb(164, 164, 164);
+        }
     </style>
 </head>
 <body>
-
+    <div class="progress"></div>
     <h3 class="ready opacity">Приготовтесь <span class="opacity num one">1</span>
                                    <span class="opacity num two">2</span>
                                    <span class="opacity num three">3</span>
